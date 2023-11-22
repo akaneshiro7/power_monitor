@@ -582,10 +582,17 @@ class CarbonTrackerManual(CarbonTracker):
         else:
             return energy, _co2eq
 
+
+    def get_energy_co2(self):
+        energy_usages = self.tracker.total_energy_per_epoch()
+        energy = energy_usages
+        _co2eq = self._co2eq(energy)
+
+        return energy, _co2eq
+        
     def epoch_end(self, save_dir=''):
         if self.deleted:
             return
-
         try:
             self.tracker.epoch_end()
             return self._output_actual(save_dir)
