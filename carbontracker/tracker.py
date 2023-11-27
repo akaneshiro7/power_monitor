@@ -307,13 +307,13 @@ class CarbonTracker:
             self._output_actual(save_dir)
 
             # No prediction needed
-            # if self.epoch_counter == self.epochs_before_pred:
-            #     self._output_pred()
-            #     if self.stop_and_confirm:
-            #         self._user_query()
+            if self.epoch_counter == self.epochs_before_pred:
+                self._output_pred()
+                if self.stop_and_confirm:
+                    self._user_query()
 
-            # if self.epoch_counter == self.monitor_epochs:
-            #     self._delete()
+            if self.epoch_counter == self.monitor_epochs:
+                self._delete()
         except Exception as e:
             self._handle_error(e)
 
